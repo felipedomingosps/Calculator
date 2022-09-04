@@ -1,0 +1,100 @@
+.calculator {
+    max-width: 300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+        "display display display display display"
+        "      .       .       .      ac      ce"
+        "  seven   eight    nine       .       ."
+        "   four    five    six multiply  divide"
+        "    one     two   three     add subtract"
+        "   zero       .       .     add equals";
+    border: solid 1px black;
+    gap: 1rem;
+    padding: .5rem 1rem;
+}
+
+.calculator > * {
+    border: solid 1px black;
+}
+
+.calculator__element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator__element--display {
+    grid-area: display;
+}
+
+.calculator__element--ac {
+    grid-area: ac;
+}
+
+.calculator__element--ce {
+    grid-area: ce;
+}
+
+.calculator__element--9 {
+    grid-area: nine;
+}
+
+.calculator__element--8 {
+    grid-area: eight;
+}
+
+.calculator__element--7 {
+    grid-area: seven;
+}
+
+.calculator__element--6 {
+    grid-area: six;
+}
+
+.calculator__element--5 {
+    grid-area: five;
+}
+
+.calculator__element--4 {
+    grid-area: four;
+}
+
+.calculator__element--3 {
+    grid-area: three;
+}
+
+.calculator__element--2 {
+    grid-area: two;
+}
+
+.calculator__element--1 {
+    grid-area: one;
+}
+
+.calculator__element--0 {
+    grid-area: zero;
+}
+
+.calculator__element--add {
+    grid-area: add;
+}
+
+.calculator__element--subtract {
+    grid-area: subtract;
+}
+
+.calculator__element--multiply {
+    grid-area: multiply;
+}
+
+.calculator__element--divide {
+    grid-area: divide;
+}
+
+.calculator__element--equals {
+    grid-area: equals;
+}
+
