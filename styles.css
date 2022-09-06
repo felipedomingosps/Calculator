@@ -1,9 +1,21 @@
+/* GENERAL */
+
 body {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
+header > h1 {
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+}
+
+/* CALCULATOR */
 
 .calculator {
     max-width: 300px;
