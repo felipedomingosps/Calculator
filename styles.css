@@ -33,7 +33,7 @@ footer {
     "   zero       .       .     add equals";
     border: solid 1px black;
     gap: .7rem;
-    padding: .5rem 1rem;
+    padding: 1rem 1.2rem;
 }
 
 .calculator > * {
