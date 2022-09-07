@@ -27,3 +27,13 @@ function operate(operator, numA, numB) {
 
     return "error"
 }
+
+function createButtons() {
+    const buttons = document.querySelectorAll('.calculator__element');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            console.log(e.target.id)
+        }) 
+    })
+}
