@@ -1,3 +1,27 @@
+function main() {
+    let numberA = "";
+    const buttons = createButtons();
+
+    let numberClicked = (e) => {
+        numberA += e.target.id;
+    }
+    let operatorClicked = (e) => {
+        buttons.forEach(button => {
+            button.removeEventListener('click', numberClicked)
+            button.removeEventListener('click', operatorClicked)
+        })
+        return numberA
+    }
+
+    buttons.forEach(button => {
+        if (['+', '-', '/', 'x','='].includes(button.id)) {
+            button.addEventListener('click', operatorClicked)
+        } else {
+            button.addEventListener('click', numberClicked)
+        }
+    })
+}
+
 
 function add(numberA, numberB) {
     return numberA + numberB
@@ -38,36 +62,3 @@ function changeNumbers(number) {
     numbersDisplay.innerHTML = number;
 }
 
-/*
-1
-- variável {numeroA} é criada
-- variável {operadorClicado} é criada
-- escreve um número
-- número aparece no display de forma dinâmica
-- sabemos o fim do número ao apertar no botão 'operador'
-- operador apertado é guardado dentro de {operadorClicado}
-- número é guardado dentro de {númeroA}
-*/
-
-function dummy() {
-    let numberA = "";
-    let operatorIsClicked = false;
-    const buttons = createButtons();
-
-    buttons.forEach(button => {
-        button.addEventListener('click', buttonClicked => {
-            if (['+', '-', '/', 'x','='].includes(buttonClicked.target.id)) {
-                
-            } else {
-                numberA += buttonClicked.target.id;
-                console.log(numberA)
-            } 
-        })
-
-    })
-
-    if (operatorIsClicked == true) {
-        return console.log('Number A - End')
-    }
-    
-}
