@@ -37,3 +37,8 @@ function createButtons() {
         }) 
     })
 }
+
+function changeNumbers(number) {
+    const numbersDisplay = document.querySelector('#numbers');
+    numbersDisplay.innerHTML = number;
+}
