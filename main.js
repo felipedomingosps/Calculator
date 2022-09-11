@@ -1,3 +1,4 @@
+
 function add(numberA, numberB) {
     return numberA + numberB
 }
@@ -29,13 +30,7 @@ function operate(operator, numA, numB) {
 }
 
 function createButtons() {
-    const buttons = document.querySelectorAll('.calculator__element');
-
-    buttons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            console.log(e.target.id)
-        }) 
-    })
+    return document.querySelectorAll('.calculator__element')
 }
 
 function changeNumbers(number) {
