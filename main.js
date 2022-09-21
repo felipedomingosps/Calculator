@@ -1,10 +1,20 @@
 function main() {
-    let numberA = "";
+    /*
+        This is not working, I think I need to learn async functions and promises for it to work
+        
+    let firstNumber = createNumber();
+    clearDisplay()
+    let secondNumber = createNumber();
+    */
+}
+
+function createNumber() {
     const buttons = createButtons();
+    let number = ''
 
     let numberClicked = (e) => {
-        numberA += e.target.id;
-        changeNumbers(e.target.id)
+        number += e.target.id;
+        changeDisplay(e.target.id)
     }
 
     let operatorClicked = (e) => {
@@ -12,11 +22,11 @@ function main() {
             button.removeEventListener('click', numberClicked)
             button.removeEventListener('click', operatorClicked)
         })
-        return numberA
+        return number
     }
 
     buttons.forEach(button => {
-        if (['+', '-', '/', 'x','='].includes(button.id)) {
+        if (['+', '-', '/', 'x'].includes(button.id)) {
             button.addEventListener('click', operatorClicked)
         } else {
             button.addEventListener('click', numberClicked)
@@ -24,21 +34,20 @@ function main() {
     })
 }
 
-
-function add(numberA, numberB) {
-    return numberA + numberB
+function add(number, numberB) {
+    return number + numberB
 }
 
-function subtract(numberA, numberB) {
-    return numberA - numberB
+function subtract(number, numberB) {
+    return number - numberB
 }
 
-function divide(numberA, numberB) {
-    return numberA / numberB
+function divide(number, numberB) {
+    return number / numberB
 }
 
-function multiply(numberA, numberB) {
-    return numberA * numberB
+function multiply(number, numberB) {
+    return number * numberB
 }
 
 function operate(operator, numA, numB) {
@@ -59,8 +68,12 @@ function createButtons() {
     return document.querySelectorAll('.calculator__element')
 }
 
-function changeNumbers(number) {
+function changeDisplay(number) {
     const numbersDisplay = document.querySelector('#numbers');
     numbersDisplay.innerHTML += number;
 }
 
+function clearDisplay() {
+    const numbersDisplay = document.querySelector('#numbers');
+    numbersDisplay.innerHTML = '';
+}
