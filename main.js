@@ -4,7 +4,9 @@ function main() {
 
     let numberClicked = (e) => {
         numberA += e.target.id;
+        changeNumbers(e.target.id)
     }
+
     let operatorClicked = (e) => {
         buttons.forEach(button => {
             button.removeEventListener('click', numberClicked)
@@ -59,6 +61,6 @@ function createButtons() {
 
 function changeNumbers(number) {
     const numbersDisplay = document.querySelector('#numbers');
-    numbersDisplay.innerHTML = number;
+    numbersDisplay.innerHTML += number;
 }
 
