@@ -1,8 +1,5 @@
 function main() {
-
 }
-
-
 
 function add(number, numberB) {
     return number + numberB
@@ -39,11 +36,9 @@ function createButtons() {
 }
 
 function changeDisplay(number) {
-    const numbersDisplay = document.querySelector('#numbers');
-    numbersDisplay.innerHTML += number;
+    document.querySelector('#numbers').innerHTML += number
 }
 
 function clearDisplay() {
-    const numbersDisplay = document.querySelector('#numbers');
-    numbersDisplay.innerHTML = '';
+    document.querySelector('#numbers').innerHTML = '';
 }
