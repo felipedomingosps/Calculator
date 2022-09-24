@@ -1,4 +1,10 @@
 function main() {
+    let firstNumber;
+    let operatorClicked;
+    createButtons();
+
+
+    
 }
 
 function add(number, numberB) {
@@ -32,13 +38,20 @@ function operate(operator, numA, numB) {
 }
 
 function createButtons() {
-    return document.querySelectorAll('.calculator__element')
+    return document.querySelectorAll('.calculator__element').forEach(button => {
+        button.addEventListener('click', e => {
+                if (e.target.dataset.number != null) {
+                    changeDisplay(e.target.dataset.number)
+                }
+                
+        })
+    })
 }
 
 function changeDisplay(number) {
-    document.querySelector('#numbers').innerHTML += number
+    return document.querySelector('#numbers').innerHTML += number
 }
 
 function clearDisplay() {
-    document.querySelector('#numbers').innerHTML = '';
+    return document.querySelector('#numbers').innerHTML = '';
 }
