@@ -4,15 +4,15 @@ function add(numberA, numberB) {
 }
 
 function subtract(numberA, numberB) {
-    return Number(numberA) + Number(numberB)
+    return Number(numberA) - Number(numberB)
 }
 
 function divide(numberA, numberB) {
-    return Number(numberA) + Number(numberB)
+    return Number(numberA) / Number(numberB)
 }
 
 function multiply(numberA, numberB) {
-    return Number(numberA) + Number(numberB)
+    return Number(numberA) * Number(numberB)
 }
 
 function operate(operator, numA, numB) {
@@ -22,7 +22,7 @@ function operate(operator, numA, numB) {
         return subtract(numA, numB)
     } else if (operator === '/') {
         return divide(numA, numB)
-    } else if (operator === '*') {
+    } else if (operator === 'x') {
         return multiply(numA, numB)
     }
 
@@ -49,15 +49,12 @@ function createOperatorButtons() {
                         calculator.firstNumberIsDone = true;
                         calculator.operatorPressed = e.target.dataset.operator
                         clearDisplay()
-                    } else {
-                        calculator.secondNumber = document.querySelector('#numbers').innerHTML
-                        calculator.secondNumberIsDone = true;
-                        clearDisplay()
                     }
                 } else {
-                    changeDisplay(operate(calculator.operatorPressed, calculator.firstNumber, calculator.secondNumber))
-                }
-                
+                    calculator.secondNumber = document.querySelector('#numbers').innerHTML
+                    calculator.secondNumberIsDone = true;
+                    replaceDisplay(operate(calculator.operatorPressed, calculator.firstNumber, calculator.secondNumber))
+                }                
         })
     })
 }
@@ -66,6 +63,10 @@ function createOperatorButtons() {
 
 function changeDisplay(number) {
     document.querySelector('#numbers').innerHTML += number
+}
+
+function replaceDisplay(number) {
+    document.querySelector('#numbers').innerHTML = number
 }
 
 function clearDisplay() {
