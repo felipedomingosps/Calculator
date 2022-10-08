@@ -120,7 +120,7 @@ function saveNumber(whichNumber, e) {
 
 function saveNumberConcatenate(whichNumber, e) {
     if (whichNumber === 'first') {
-        calculator.firstNumber = parseInt(calculator.firstNumber) + parseInt(document.querySelector('#numbers').innerHTML);
+        calculator.firstNumber = operate(calculator.operatorPressed, parseInt(calculator.firstNumber), parseInt(document.querySelector('#numbers').innerHTML))
         calculator.firstNumberIsDone = true;
         calculator.operatorPressed = e.target.dataset.operator
         clearDisplay()
