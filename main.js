@@ -21,6 +21,9 @@ function operate(operator, numA, numB) {
     } else if (operator === '-') {
         return subtract(numA, numB)
     } else if (operator === '/') {
+        if (divide(numA, numB) === Infinity) {
+            return 0
+        }
         return divide(numA, numB)
     } else if (operator === 'x') {
         return multiply(numA, numB)
@@ -32,7 +35,7 @@ function operate(operator, numA, numB) {
 function createNumberButtons() {
     return document.querySelectorAll('.calculator__element--number').forEach(button => {
         button.addEventListener('click', e => {
-                if (document.querySelector('#numbers').innerHTML.length < 20) {
+                if (document.querySelector('#numbers').innerHTML.length < 12) {
                     if (calculator.firstNumber === NaN || calculator.secondNumber === NaN) {
                         reset()
                         return
@@ -43,8 +46,10 @@ function createNumberButtons() {
                     }
                     if (calculator.firstNumberIsDone === true && calculator.secondNumberIsDone === true) {
                         reset()
+                    } else if(calculator.firstNumber == document.querySelector('#numbers').innerHTML) {
+                         replaceDisplay(e.target.dataset.number.substring(0,12))
                     } else if (e.target.dataset.number != null) {
-                        changeDisplay(e.target.dataset.number)
+                        changeDisplay(e.target.dataset.number.substring(0,12))
                     }
                 }                 
         })
@@ -84,11 +89,16 @@ function createEqualsButtons() {
                 } else if (calculator.firstNumberIsDone === true) {
                     saveNumber('second')
                     replaceDisplay(operate(calculator.operatorPressed, calculator.firstNumber, calculator.secondNumber))
+                    calculator.operatorPressed = null;
                 }
                 
 
                 
         })
+}
+
+function createClearButton() {
+    document.querySelector('#clear').addEventListener('click', reset)
 }
 
 function leftZero() {
@@ -100,12 +110,16 @@ function leftZero() {
 function changeDisplay(number) {
     leftZero()
     document.querySelector('#numbers').innerHTML += number
+    document.querySelector('#numbers').innerHTML = document.querySelector('#numbers').innerHTML.substring(0,12)
 }
 
 function replaceDisplay(number) {
     leftZero()
     document.querySelector('#numbers').innerHTML = number
+    document.querySelector('#numbers').innerHTML = document.querySelector('#numbers').innerHTML.substring(0,12)
 }
+
+
 
 function clearDisplay() {
     return document.querySelector('#numbers').innerHTML = '0';
@@ -132,7 +146,7 @@ function saveNumberConcatenate(whichNumber, e) {
         calculator.firstNumber = operate(calculator.operatorPressed, parseInt(calculator.firstNumber), parseInt(document.querySelector('#numbers').innerHTML))
         calculator.firstNumberIsDone = true;
         calculator.operatorPressed = e.target.dataset.operator
-        clearDisplay()
+        document.querySelector('#numbers').innerHTML = calculator.firstNumber
     }
 }
 
@@ -153,6 +167,7 @@ function parcialReset() {
     calculator.operationIsFinished = false;
 }
 
+
 /* APP */
 let calculator = {
     firstNumber: 0,
@@ -166,3 +181,4 @@ let calculator = {
 createNumberButtons()
 createOperatorButtons()
 createEqualsButtons()
+createClearButton()
