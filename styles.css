@@ -12,6 +12,10 @@ body {
     justify-content: space-between;
 }
 
+header {
+    margin: 0 auto;
+}
+
 header > h1 {
     text-align: center;
     margin: 1em 0;
@@ -22,6 +26,7 @@ header > h1 {
 
 footer {
     text-align: center;
+    margin: 0 auto;
 }
 
 footer > p {
