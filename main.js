@@ -32,20 +32,21 @@ function operate(operator, numA, numB) {
 function createNumberButtons() {
     return document.querySelectorAll('.calculator__element--number').forEach(button => {
         button.addEventListener('click', e => {
-                if (calculator.firstNumber === NaN || calculator.secondNumber === NaN) {
-                    reset()
-                    return
-                }
-                if (calculator.operationIsFinished === true) {
-                    reset()
-                    return
-                }
-                if (calculator.firstNumberIsDone === true && calculator.secondNumberIsDone === true) {
-                    reset()
-                } else if (e.target.dataset.number != null) {
-                    changeDisplay(e.target.dataset.number)
-                }
-                
+                if (document.querySelector('#numbers').innerHTML.length < 20) {
+                    if (calculator.firstNumber === NaN || calculator.secondNumber === NaN) {
+                        reset()
+                        return
+                    }
+                    if (calculator.operationIsFinished === true) {
+                        reset()
+                        return
+                    }
+                    if (calculator.firstNumberIsDone === true && calculator.secondNumberIsDone === true) {
+                        reset()
+                    } else if (e.target.dataset.number != null) {
+                        changeDisplay(e.target.dataset.number)
+                    }
+                }                 
         })
     })
 }
@@ -90,16 +91,24 @@ function createEqualsButtons() {
         })
 }
 
+function leftZero() {
+    if(document.querySelector('#numbers').innerHTML[0] === '0') {
+        document.querySelector('#numbers').innerHTML = document.querySelector('#numbers').innerHTML.slice(1);
+    }
+}
+
 function changeDisplay(number) {
+    leftZero()
     document.querySelector('#numbers').innerHTML += number
 }
 
 function replaceDisplay(number) {
+    leftZero()
     document.querySelector('#numbers').innerHTML = number
 }
 
 function clearDisplay() {
-    return document.querySelector('#numbers').innerHTML = '';
+    return document.querySelector('#numbers').innerHTML = '0';
 }
 
 function saveNumber(whichNumber, e) {
