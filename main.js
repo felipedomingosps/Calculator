@@ -1,3 +1,4 @@
+
 /* FUNCTIONS */ 
 function add(numberA, numberB) {
     return Number(numberA) + Number(numberB)
@@ -27,6 +28,24 @@ function operate(operator, numA, numB) {
         return divide(numA, numB)
     } else if (operator === 'x') {
         return multiply(numA, numB)
+=======
+async function main() {
+    /*
+        This is not working, I think I need to learn async functions and promises for it to work
+    */
+    let firstNumber =  createNumber();
+    clearDisplay()
+    let secondNumber = createNumber();
+    
+}
+
+function createNumber() {
+    const buttons = createButtons();
+    let number = ''
+
+    let numberClicked = (e) => {
+        number += e.target.id;
+        changeDisplay(e.target.id)
     }
 
     return "error"
@@ -56,6 +75,7 @@ function createNumberButtons() {
                     }
                 }                 
         })
+
     })
 }
 
@@ -112,12 +132,20 @@ function createDotButton() {
         
         if (document.querySelector('#numbers').innerHTML == 0) {
             changeDisplay('0.')
+=======
+        return number
+    }
+
+    buttons.forEach(button => {
+        if (['+', '-', '/', 'x'].includes(button.id)) {
+            button.addEventListener('click', operatorClicked)
         } else {
             changeDisplay('.')
         }
         
     })
 }
+
 
 function createBackspaceButton() {
     document.querySelector('.calculator__element--backspace').addEventListener('click', () => {
@@ -160,6 +188,28 @@ function replaceDisplay(number) {
 
 function clearDisplay() {
     return document.querySelector('#numbers').innerHTML = '0';
+=======
+function clearDisplay() {
+    const numbersDisplay = document.querySelector('#numbers');
+    numbersDisplay.innerHTML = '';
+}
+
+
+function add(number, numberB) {
+    return number + numberB
+}
+
+function subtract(number, numberB) {
+    return number - numberB
+}
+
+function divide(number, numberB) {
+    return number / numberB
+}
+
+function multiply(number, numberB) {
+    return number * numberB
+
 }
 
 function saveNumber(whichNumber, e) {
@@ -202,11 +252,17 @@ function reset() {
     calculator.operationIsFinished = false;
 }
 
+
 function parcialReset() {
     calculator.secondNumber = 0,
     calculator.firstNumberIsDone = true,
     calculator.secondNumberIsDone = false,
     calculator.operationIsFinished = false;
+=======
+function changeDisplay(number) {
+    const numbersDisplay = document.querySelector('#numbers');
+    numbersDisplay.innerHTML += number;
+
 }
 
 
