@@ -7,16 +7,21 @@
     <script src="main.js" defer></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="reset.css">
+    <link href="http://fonts.cdnfonts.com/css/ds-digital" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
     <title>Calculator</title>
 </head>
 <body>
     <header>
-        <h1>Dummy Title</h1>
+        <h1>CALCULATOR</h1>
     </header>
     <main>
         <div class="calculator">
             <div class="calculator__element calculator__element--display" id="display"><div class="display__numbers" id="numbers">0</div></div>
-            <div class="calculator__element calculator__element--clear" id="clear" data-key=" ">CLEAR</div>
+            <div class="calculator__element calculator__element--backspace">←</div>
+            <div class="calculator__element calculator__element--clear" id="clear">CE</div>
             <div class="calculator__element calculator__element--number calculator__element--1" data-number="1" data-key=" ">1</div>
             <div class="calculator__element calculator__element--number calculator__element--2" data-number="2" data-key=" ">2</div>
             <div class="calculator__element calculator__element--number calculator__element--3" data-number="3" data-key=" ">3</div>
@@ -27,15 +32,17 @@
             <div class="calculator__element calculator__element--number calculator__element--8" data-number="8" data-key=" ">8</div>
             <div class="calculator__element calculator__element--number calculator__element--9" data-number="9" data-key=" ">9</div>
             <div class="calculator__element calculator__element--number calculator__element--0" data-number="0" data-key=" ">0</div>
+            <div class="calculator__element calculator__element--number calculator__element--00" data-number="00" data-key=" ">00</div>
             <div class="calculator__element calculator__element--operator calculator__element--add" data-operator="+" data-key=" ">+</div>
             <div class="calculator__element calculator__element--operator calculator__element--subtract" data-operator="-" data-key=" ">-</div>
             <div class="calculator__element calculator__element--operator calculator__element--multiply" data-operator="x" data-key=" ">x</div>
             <div class="calculator__element calculator__element--operator calculator__element--divide" data-operator="/" data-key=" ">/</div>
             <div class="calculator__element calculator__element--equals" data-operator="=">=</div>
+            <div class="calculator__element calculator__element--dot">.</div>
         </div>
     </main>
     <footer>
-        <p>Dummy footer</p>
+        <p>BY FELIPE D.</p>
     </footer>
 </body>
 </html>

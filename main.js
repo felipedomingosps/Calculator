@@ -46,8 +46,11 @@ function createNumberButtons() {
                     }
                     if (calculator.firstNumberIsDone === true && calculator.secondNumberIsDone === true) {
                         reset()
-                    } else if(calculator.firstNumber == document.querySelector('#numbers').innerHTML) {
-                         replaceDisplay(e.target.dataset.number.substring(0,12))
+                    } else if(calculator.firstNumber === document.querySelector('#numbers').innerHTML) {
+                        replaceDisplay(e.target.dataset.number.substring(0,12))
+                        console.log('test')
+                    } else if ( document.querySelector('#numbers').innerHTML == '0.') { 
+                        changeDisplay(e.target.dataset.number)
                     } else if (e.target.dataset.number != null) {
                         changeDisplay(e.target.dataset.number.substring(0,12))
                     }
@@ -101,7 +104,40 @@ function createClearButton() {
     document.querySelector('#clear').addEventListener('click', reset)
 }
 
+function createDotButton() {
+    document.querySelector('.calculator__element--dot').addEventListener('click', () => {
+        if (document.querySelector('#numbers').innerHTML.includes('.')) {
+            return
+        }
+        
+        if (document.querySelector('#numbers').innerHTML == 0) {
+            changeDisplay('0.')
+        } else {
+            changeDisplay('.')
+        }
+        
+    })
+}
+
+function createBackspaceButton() {
+    document.querySelector('.calculator__element--backspace').addEventListener('click', () => {
+        if (document.querySelector('#numbers').innerHTML == 0) {
+            return
+        } else if (document.querySelector('#numbers').innerHTML.length === 1) {
+            document.querySelector('#numbers').innerHTML = '0'
+        } else {
+            document.querySelector('#numbers').innerHTML = document.querySelector('#numbers').innerHTML.slice(0,-1)
+        }
+        
+        
+       
+    })
+}
+
 function leftZero() {
+    if (document.querySelector('#numbers').innerHTML == '0.') {
+        return
+    }
     if(document.querySelector('#numbers').innerHTML[0] === '0') {
         document.querySelector('#numbers').innerHTML = document.querySelector('#numbers').innerHTML.slice(1);
     }
@@ -114,6 +150,7 @@ function changeDisplay(number) {
 }
 
 function replaceDisplay(number) {
+
     leftZero()
     document.querySelector('#numbers').innerHTML = number
     document.querySelector('#numbers').innerHTML = document.querySelector('#numbers').innerHTML.substring(0,12)
@@ -127,12 +164,12 @@ function clearDisplay() {
 
 function saveNumber(whichNumber, e) {
     if (whichNumber === 'first') {
-        calculator.firstNumber = parseInt(document.querySelector('#numbers').innerHTML);
+        calculator.firstNumber = Number(document.querySelector('#numbers').innerHTML);
         calculator.firstNumberIsDone = true;
         calculator.operatorPressed = e.target.dataset.operator
         clearDisplay()
     } else if (whichNumber === 'second') {
-        calculator.secondNumber = parseInt(document.querySelector('#numbers').innerHTML);
+        calculator.secondNumber = Number(document.querySelector('#numbers').innerHTML);
         calculator.secondNumberIsDone = true;
         clearDisplay()
 
@@ -143,7 +180,12 @@ function saveNumber(whichNumber, e) {
 
 function saveNumberConcatenate(whichNumber, e) {
     if (whichNumber === 'first') {
-        calculator.firstNumber = operate(calculator.operatorPressed, parseInt(calculator.firstNumber), parseInt(document.querySelector('#numbers').innerHTML))
+            let concatenateOperation = operate(calculator.operatorPressed, Number(calculator.firstNumber), Number(document.querySelector('#numbers').innerHTML));
+        if (concatenateOperation !== concatenateOperation) {
+            reset()
+            return
+        }
+        calculator.firstNumber = concatenateOperation;
         calculator.firstNumberIsDone = true;
         calculator.operatorPressed = e.target.dataset.operator
         document.querySelector('#numbers').innerHTML = calculator.firstNumber
@@ -182,3 +224,5 @@ createNumberButtons()
 createOperatorButtons()
 createEqualsButtons()
 createClearButton()
+createDotButton()
+createBackspaceButton()
