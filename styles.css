@@ -10,6 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: cornflowerblue;
 }
 
 header > h1 {
@@ -20,13 +21,39 @@ footer {
     text-align: center;
 }
 
+main {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0 auto;
+}
+
+main h1 {
+    font-size: 2.5em;
+    margin-bottom: .2em;
+    font-family: 'Silkscreen', serif;
+    margin-right: .1em;
+}
+
+main p {
+    font-size: 1.2em;
+    margin-bottom: .2em;
+    font-family: 'Questrial', serif;
+    font-weight: 700;
+    margin-right: .4em;
+}
+
+footer p {
+    margin-bottom: .5em;
+    font-family: 'Questrial', serif;
+    font-weight: 700;
+}
+
 /* CALCULATOR */
 
 .calculator {
-    --size: 40vh;
-    height: var(--size);
-    width: var(--size);
-    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
@@ -36,13 +63,19 @@ footer {
     "   four    five    six multiply  divide"
     "    one     two   three     add subtract"
     "   zero       .       .     add equals";
-    border: solid 1px black;
     gap: .7rem;
+
+    --size: 40vh;
+    height: var(--size);
+    width: var(--size);
+    margin: 0 auto;
     padding: 2.5rem 1.2rem;
+
     background-color:  hsl(300, 4%, 81%);
+
     border: solid .2rem hsl(300, 4%, 10%);
     border-radius: 10px;
-    font-size: 100%;
+
     font-weight: 700;
 }
 
